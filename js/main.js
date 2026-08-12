@@ -480,6 +480,26 @@ function initReviewsCarousel() {
   show(0);
 }
 
+function initScrollAssist() {
+  const progress = document.querySelector("[data-scroll-progress]");
+  const button = document.querySelector("[data-back-to-top]");
+  if (!progress && !button) return;
+
+  const update = () => {
+    const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const ratio = Math.min(1, Math.max(0, window.scrollY / scrollable));
+    if (progress) progress.style.transform = `scaleX(${ratio})`;
+    button?.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.8);
+  };
+
+  button?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+}
+
 const header = document.querySelector("[data-header]");
 if (header) {
   new IntersectionObserver(([entry]) => header.classList.toggle("is-scrolled", !entry.isIntersecting), { threshold: 0.92 }).observe(document.querySelector("#top"));
@@ -495,5 +515,6 @@ initLeadForms();
 initReveal();
 initAcceptedCards();
 initReviewsCarousel();
+initScrollAssist();
 renderStaticVeraIcons();
 refreshIcons();
