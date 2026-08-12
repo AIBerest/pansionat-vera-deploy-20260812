@@ -1,0 +1,18 @@
+Options -MultiViews
+RewriteEngine On
+
+# Keep one canonical HTTPS host for search engines and users.
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://xn----7sbabjsr3bbjhvfs.xn--p1ai%{REQUEST_URI} [R=301,L,NE]
+
+ErrorDocument 404 /404.html
+
+# Preserve the Vercel API URL when the site runs on Apache/PHP hosting.
+RewriteRule ^api/telegram-lead$ api/lead.php [L,QSA]
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
