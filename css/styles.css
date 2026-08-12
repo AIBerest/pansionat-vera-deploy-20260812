@@ -530,14 +530,20 @@ p { text-wrap: pretty; }
   .cookie-banner { right: 12px; bottom: 12px; left: 12px; grid-template-columns: 1fr; gap: 14px; width: calc(100% - 24px); padding: 18px; }
   .cookie-actions { display: grid; grid-template-columns: 1fr; gap: 8px; }
   .cookie-actions .btn { width: 100%; }
-  .viewing-dialog { position: fixed; top: max(10px, env(safe-area-inset-top)); right: auto; bottom: auto; left: 50%; width: min(calc(100vw - 20px), 430px); max-width: calc(100vw - 20px); max-height: calc(100dvh - 20px); margin: 0; padding: 42px 18px 20px; transform: translateX(-50%); }
-  .viewing-dialog-copy h2 { font-size: clamp(2.35rem, 11vw, 3.35rem); line-height: 1; }
-  .viewing-dialog-copy p:last-child { font-size: var(--text-base); line-height: 1.42; }
-  .viewing-form { gap: 12px; margin-top: var(--space-lg); }
-  .viewing-form input:not([type="checkbox"]) { min-height: 50px; }
-  .viewing-form .consent { font-size: var(--text-xs); line-height: 1.35; }
-  .viewing-dialog .text-link { white-space: normal; flex-wrap: wrap; }
-  .dialog-close { top: 8px; right: 10px; }
+  .viewing-dialog { position: fixed; inset: auto 8px max(8px, env(safe-area-inset-bottom)) 8px; width: auto; max-width: none; max-height: min(82dvh, 560px); margin: 0; padding: 14px 14px 12px; border-radius: 22px 22px 16px 16px; overflow-y: auto; transform: none; }
+  .viewing-dialog-copy .eyebrow { font-size: .62rem; letter-spacing: .06em; }
+  .viewing-dialog-copy h2 { max-width: calc(100% - 38px); margin-top: 4px; font-size: clamp(1.42rem, 6.8vw, 1.76rem); line-height: 1; }
+  .viewing-dialog-copy p:last-child { max-width: none; margin-top: 8px; font-size: .9rem; line-height: 1.28; }
+  .viewing-form { gap: 8px; margin-top: 12px; }
+  .viewing-form > label:not(.consent) { gap: 5px; font-size: .88rem; }
+  .viewing-form input:not([type="checkbox"]) { min-height: 44px; padding: 9px 12px; border-radius: 14px; font-size: 16px; }
+  .viewing-form .consent { gap: 8px; font-size: .72rem; line-height: 1.18; }
+  .viewing-form .consent input { flex: 0 0 19px; width: 19px; height: 19px; margin-top: 0; }
+  .viewing-form .btn { position: sticky; bottom: -1px; min-height: 48px; margin-top: 2px; border-radius: 14px; font-size: .98rem; }
+  .viewing-dialog .text-link { justify-content: center; white-space: normal; flex-wrap: wrap; font-size: .84rem; }
+  .form-status { min-height: 1.2em; font-size: .82rem; }
+  .dialog-close { top: 7px; right: 9px; width: 34px; height: 34px; border-radius: 50%; background: color-mix(in srgb, var(--color-paper) 86%, transparent); font-size: 1.8rem; }
+  .dialog-consultation { display: none; }
   .editorial-grid { grid-template-columns: 1fr; gap: 28px; width: min(100% - 32px, 1260px); }
   .editorial-chapter { padding: 56px 0; }
   .editorial-chapter .chapter-copy, .editorial-chapter .chapter-media { grid-column: 1; max-width: none; }
